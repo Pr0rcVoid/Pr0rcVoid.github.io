@@ -8,7 +8,7 @@
         }
 
         body {
-            background: slategray;
+            background: #1c2b30;
         }
 
         textarea {
@@ -23,6 +23,7 @@
             margin: 5px;
             background: rgb(69, 69, 69);
             border: 7px rgb(0, 0, 0);
+            border-radius: 12px 4px;
         }
 
         span {
@@ -46,13 +47,27 @@
             margin: auto;
         }
 
+        .spanbox {
+            padding-top: 0.2em;
+        }
+
         #buttonCol {
             display: flex;
             flex-direction: column;
+            padding: 0.2em 0 0.2em 0;
         }
 
         #SpecOut {
             background: rgb(35, 63, 100);
+            border-radius: 17px;
+        }
+
+        #txaIn {
+            border-radius: 0px 22px 0px 22px;
+        }
+
+        #txaOut {
+            border-radius: 22px 0px 22px 0px;
         }
     </style>
     <script>
@@ -132,7 +147,7 @@
         <div class="item">
             <div class="subitem">
                 <div class="subitem">
-                    <div class="subitem">
+                    <div class="subitem spanbox">
                         <span>Unshuffled themes:</span>
                     </div>
                     <textarea name="" id="txaIn" cols="30" rows="25">
@@ -164,7 +179,7 @@ Relationship</textarea>
                 </div>
             </div>
             <div class="subitem">
-                <div class="subitem">
+                <div class="subitem spanbox">
                     <span>Shuffshuffled themes:</span>
                 </div>
                 <div class="subitem">
