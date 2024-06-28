@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        * {
+            color: rgb(255, 174, 0);
+        }
+
+        body {
+            background: slategray;
+        }
+
+        textarea {
+            background: rgb(73, 65, 80);
+            padding: 12px;
+        }
+
+        button {
+            height: 42px;
+            width: auto;
+            padding: 12px;
+            margin: 5px;
+            background: rgb(69, 69, 69);
+            border: 7px rgb(0, 0, 0);
+        }
+
+        span {
+            padding-left: 0.2em;
+            font-style: oblique;
+            font-weight: 600;
+        }
+
+        button:hover {
+            background: rgb(166, 166, 166);
+        }
+
+        .container {
+            display: flex;
+            align-content: center;
+        }
+
+        .item {
+            min-width: 0.2em;
+            padding: 0.2em;
+            margin: auto;
+        }
+
+        #buttonCol {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #SpecOut {
+            background: rgb(35, 63, 100);
+        }
+    </style>
+    <script>
+        var Shuffled = false;
+        var InpList;
+        var InArea;
+        var OutArea;
+
+        function FischerYatesShuffle(ShuffleMeTimbers) {
+
+            var Count = ShuffleMeTimbers.length,
+                TemporaryForeverHome, Commuter;
+            // While there's still a piece in its "original" place
+            while (Count) {
+                // Pick a commuter
+                Commuter = Math.floor(Math.random() * Count--);
+
+                // Put her in her new Temporary Foreverhome
+                TemporaryForeverHome = ShuffleMeTimbers[Count];
+                ShuffleMeTimbers[Count] = ShuffleMeTimbers[Commuter];
+                ShuffleMeTimbers[Commuter] = TemporaryForeverHome;
+            }
+
+            // Send the commuters home
+            return ShuffleMeTimbers;
+        }
+
+        function PickANumber() {
+            if (!Shuffled) {
+                Shuffle();
+            }
+            var rnd = Math.floor(Math.random() * InpList.length--)
+            var counter = rnd < 9 ? '0' + (rnd + 1) : rnd + 1;
+            //alert(counter + ' - ' + InpList[rnd]);
+            document.getElementById('SpecOut').textContent = 'Entro-pick:\n' + counter + ' - ' + InpList[rnd];
+        }
+
+        function Shuffle() {
+            InArea = document.getElementById('txaIn');
+            OutArea = document.getElementById('txaOut');
+            InpList = InArea.value.split('\n');
+            InpList = FischerYatesShuffle(InpList);
+
+            var outString = '';
+            for (let i = 0; i < InpList.length; i++) {
+                var counter = i < 9 ? '0' + (i + 1) : i + 1;
+                console.log(counter);
+                outString += counter + ' - ' + InpList[i] + '\n';
+            }
+
+            OutArea.textContent = outString.trim();
+            Shuffled = true;
+        }
+
+        function TopThree() {
+            if (!Shuffled) {
+                Shuffle();
+            }
+            var outPut = '';
+
+            var reShuff = FischerYatesShuffle(OutArea.value.split('\n'));
+
+            for (i = 0; i < 3; i++) {
+                outPut += reShuff[i] + '\n';
+            }
+            //alert(outPut);
+            document.getElementById('SpecOut').textContent = 'Top 3:\n' + outPut;
+        }
+    </script>
+    <title>
+        Hattarino
+    </title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="item">
+            <div class="subitem">
+                <div class="subitem">
+                    <div class="subitem">
+                        <span>Unshuffled themes:</span>
+                    </div>
+                    <textarea name="" id="txaIn" cols="30" rows="25">
+Replayability
+Break-out
+Luck of the draw
+Words are power
+Dice!
+Handicap(s)
+Boing
+Flop
+Skedaddle
+Go Deep
+Maintain
+Change
+Rogue
+Letter Tiles
+Relationship</textarea>
+                </div>
+                <div class="subitem">
+                    <div class="subitem">
+                        <div id="buttonCol">
+                            <button onclick="Shuffle()">Shuffle!</button>
+                            <button onclick="PickANumber()">Pick one</button>
+                            <button onclick="TopThree()">Top 3!</button>
+                            <textarea id="SpecOut" cols="30" rows="4" disabled=""></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="subitem">
+                <div class="subitem">
+                    <span>Shuffshuffled themes:</span>
+                </div>
+                <div class="subitem">
+                    <textarea name="output" id="txaOut" cols="30" rows="25" disabled="">
+
+            </textarea>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+</body>
+
+</html>
