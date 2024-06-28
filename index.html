@@ -104,7 +104,7 @@
             var rnd = Math.floor(Math.random() * InpList.length--)
             var counter = rnd < 9 ? '0' + (rnd + 1) : rnd + 1;
             //alert(counter + ' - ' + InpList[rnd]);
-            document.getElementById('SpecOut').textContent = 'Entro-pick:\n' + counter + ' - ' + InpList[rnd];
+            document.getElementById('SpecOut').textContent = 'Entro-pick:\n' + counter + ' - ' + InpList[rnd].trim();
         }
 
         function Shuffle() {
@@ -136,7 +136,7 @@
                 outPut += reShuff[i] + '\n';
             }
             //alert(outPut);
-            document.getElementById('SpecOut').textContent = 'Top 3:\n' + outPut;
+            document.getElementById('SpecOut').textContent = 'Top 3:\n' + outPut.trim();
         }
     </script>
     <title>
