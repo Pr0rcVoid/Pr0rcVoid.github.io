@@ -6,6 +6,7 @@
     <style>
         * {
             color: rgb(255, 174, 0);
+            font-weight: bold;
         }
 
         body {
@@ -16,6 +17,7 @@
             background: rgb(73, 65, 80);
             padding: 12px;
             border: 0px;
+            resize: none;
         }
 
         button {
@@ -56,20 +58,48 @@
         #buttonCol {
             display: flex;
             flex-direction: column;
-            padding: 0.2em 0 0.2em 0;
+            padding: 0.2em;
         }
 
-        #SpecOut {
+        #SpecOut,
+        #txWrapperSpecOut {
             background: rgb(35, 63, 100);
-            border-radius: 17px;
+            border-radius: 7px 7px 17px 17px;
         }
 
-        #txaIn {
+        #txaIn,
+        #txWrappertxaIn {
             border-radius: 0px 22px 0px 22px;
         }
 
-        #txaOut {
+        #txaOut,
+        #txWrappertxaOut {
             border-radius: 22px 0px 22px 0px;
+        }
+
+        #SpecOut {
+            background-image: linear-gradient(to left, violet, rgb(119, 24, 187), rgb(0, 81, 255), green, rgb(197, 197, 11), orange, rgb(184, 16, 16)) !important;
+            color: rgba(255, 255, 255, 0.5) !important;
+            background-size: 1000% 800% !important;
+            background-clip: text !important;
+            text-fill-color: transparent !important;
+            animation: rainbow 12s ease reverse infinite !important;
+            background: none;
+        }
+
+
+        @keyframes rainbow {
+            0% {
+                background-position: 0% 50%
+            }
+
+            50% {
+                background-position: 100% 25%
+            }
+
+            100% {
+                background-position: 0% 50%
+            }
         }
     </style>
     <script>
@@ -152,7 +182,8 @@
                     <div class="subitem spanbox">
                         <span>Unshuffled themes:</span>
                     </div>
-                    <textarea name="" id="txaIn" cols="30" rows="25">
+                    <b id="txWrappertxaIn">
+                        <textarea id="txaIn" cols="30" rows="20">
 Replayability
 Break-out
 Luck Of The Draw
@@ -173,7 +204,7 @@ A e s t h e t i c
 Da, Comrade
 Entropy
 Order
-Jam</textarea>
+Jam</textarea></b>
                 </div>
                 <div class="subitem">
                     <div class="subitem">
@@ -181,7 +212,7 @@ Jam</textarea>
                             <button onclick="Shuffle()">Shuffle!</button>
                             <button onclick="PickANumber()">Pick one</button>
                             <button onclick="TopThree()">Top 3!</button>
-                            <textarea id="SpecOut" cols="30" rows="4" disabled=""></textarea>
+                            <b id="txWrapperSpecOut"><textarea id="SpecOut" cols="30" rows="4" disabled=""></textarea></b>
                         </div>
                     </div>
                 </div>
@@ -191,9 +222,9 @@ Jam</textarea>
                     <span>Shuffshuffled themes:</span>
                 </div>
                 <div class="subitem">
-                    <textarea name="output" id="txaOut" cols="30" rows="25" disabled="">
+                    <b id="txWrappertxaOut"><textarea id="txaOut" cols="30" rows="20" disabled="">
 
-            </textarea>
+            </textarea></b>
 
                 </div>
             </div>
